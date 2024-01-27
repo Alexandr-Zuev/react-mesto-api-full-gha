@@ -10,6 +10,7 @@ const { errors } = require('celebrate');
 const { login, createUser } = require('./controllers/users');
 const authMiddleware = require('./middlewares/auth');
 const NotFoundError = require('./errors/not-found-error');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const errorHandler = (err, req, res, next) => {
   console.log(err.status);
@@ -58,6 +59,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(requestLogger);
 app.post('/signin', loginValidation, login);
 app.post('/signup', createUserValidation, createUser);
 app.use(authMiddleware);
@@ -66,5 +68,6 @@ app.use('/cards', require('./routes/cards'));
 
 app.use((req, res, next) => next(new NotFoundError('Страница не найдена')));
 
+app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
