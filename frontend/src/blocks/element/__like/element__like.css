@@ -1,0 +1,8 @@
+.element__like {
+  width: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 22px 20px 22px 0;
+}

@@ -1,0 +1,8 @@
+.content {
+  width: 88.125%;
+  max-width: 880px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto 0 auto;
+}

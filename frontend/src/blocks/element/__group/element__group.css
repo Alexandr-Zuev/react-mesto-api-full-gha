@@ -1,0 +1,8 @@
+.element__group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-height: 85px;
+  margin: 0;
+}

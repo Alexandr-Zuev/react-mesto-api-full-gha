@@ -1,0 +1,24 @@
+.open-button {
+  background-image: url('../../images/editButton.svg');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  width: 24px;
+  height: 24px;
+  margin-left: 18px;
+  cursor: pointer;
+}
+
+.open-button:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 740px) {
+  .open-button {
+    background-image: url('../../images/editButtonMobile.svg');
+    width: 18px;
+    height: 18px;
+    margin-left: 10px;
+  }
+}
