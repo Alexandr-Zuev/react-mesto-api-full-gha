@@ -9,7 +9,6 @@ const BadRequestError = require('../errors/bad-request-error');
 const OK = 200;
 const CREATED = 201;
 const SOLT_ROUND = 10;
-const SECRET_KEY = '123';
 
 async function getUsers(req, res, next) {
   try {
@@ -132,7 +131,7 @@ async function login(req, res, next) {
     if (user) {
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (isPasswordValid) {
-        const token = jwt.sign({ _id: user._id }, SECRET_KEY, { expiresIn: '1w' });
+        const token = jwt.sign({ _id: user._id }, process.env.NODE_ENV === 'production' ? process.env.JWT_SECRET : 'dev-secret', { expiresIn: '1w' });
         res.cookie('jwt', token, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 });
         return res.status(OK).json({ message: 'Авторизация успешна', token });
       }

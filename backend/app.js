@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
+require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const { celebrate, Joi } = require('celebrate');
@@ -11,6 +11,7 @@ const { login, createUser } = require('./controllers/users');
 const authMiddleware = require('./middlewares/auth');
 const NotFoundError = require('./errors/not-found-error');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { DB_ADDRESS } = require('./config');
 
 const errorHandler = (err, req, res, next) => {
   console.log(err.status);
@@ -46,7 +47,7 @@ app.listen(PORT, () => {
   console.log(`Сервер запущен на порту ${PORT}`);
 });
 
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
+mongoose.connect(DB_ADDRESS);
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'Ошибка подключения к MongoDB:'));
@@ -60,6 +61,13 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 app.post('/signin', loginValidation, login);
 app.post('/signup', createUserValidation, createUser);
 app.use(authMiddleware);
