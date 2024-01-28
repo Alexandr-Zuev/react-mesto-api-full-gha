@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.201.176.203
+IP 84.201.176.203
 
 Frontend https://zuev.nomoredomainsmonster.ru
 
