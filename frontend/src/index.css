@@ -3,6 +3,9 @@
 @import url(../src/blocks/root/root.css);
 @import url(../src/blocks/page/page.css);
 @import url(../src/blocks/header/header.css);
+@import url(../src/blocks/header/__text/header__text.css);
+@import url(../src/blocks/header/__email/header__email.css);
+@import url(../src/blocks/header/__group/header__group.css);
 @import url(../src/blocks/logo/logo.css);
 @import url(../src/blocks/content/content.css);
 @import url(../src/blocks/profile/profile.css);
@@ -43,3 +46,13 @@
 @import url(../src/blocks/popup/_is-opened/popup_is-opened.css);
 @import url(../src/blocks/footer/footer.css);
 @import url(../src/blocks/footer/__text/footer__text.css);
+@import url(../src/blocks/register/register.css);
+@import url(../src/blocks/register/__form/register__form.css);
+@import url(../src/blocks/register/__input/register__input.css);
+@import url(../src/blocks/register/__submitbtn/register__submitbtn.css);
+@import url(../src/blocks/register/__title/register__title.css);
+@import url(../src/blocks/register/__span/register__span.css);
+@import url(../src/blocks/register/__link/register__link.css);
+@import url(../src/blocks/infotooltip/infotooltip.css);
+@import url(../src/blocks/infotooltip/__img/infotooltip__img.css);
+@import url(../src/blocks/infotooltip/__text/infotooltip__text.css);

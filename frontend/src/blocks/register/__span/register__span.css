@@ -1,0 +1,11 @@
+.register__span {
+  box-sizing: border-box;
+  margin: 15px auto 0 auto;
+  text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}

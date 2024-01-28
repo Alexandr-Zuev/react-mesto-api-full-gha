@@ -1,0 +1,16 @@
+.header__text {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #fff;
+    margin-top: 0;
+    text-decoration: none;
+    border: none;
+    background: none;
+}
+
+.header__text:hover {
+    opacity: 0.8;
+}
+
+

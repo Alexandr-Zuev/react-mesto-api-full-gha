@@ -1,3 +1,5 @@
+import { BASE_URL } from '../config.js';
+
 class Api {
   constructor(options) {
     this.baseUrl = options.baseUrl;
@@ -13,25 +15,21 @@ class Api {
 
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
-      headers: {
-        authorization: this.headers.authorization
-      }
+      credentials: "include"
     }).then(this._getResponseData);
   }
 
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, {
-      headers: {
-        authorization: this.headers.authorization
-      }
+      credentials: "include",
     }).then(this._getResponseData);
   }
 
   editProfile(data) {
     return fetch(`${this.baseUrl}/users/me`, {
+      credentials: "include",
       method: 'PATCH',
       headers: {
-        authorization: this.headers.authorization,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
@@ -40,9 +38,9 @@ class Api {
 
   addNewCard(data) {
     return fetch(`${this.baseUrl}/cards`, {
+      credentials: "include",
       method: 'POST',
       headers: {
-        authorization: this.headers.authorization,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
@@ -51,18 +49,16 @@ class Api {
 
   deleteCard(cardId) {
     return fetch(`${this.baseUrl}/cards/${cardId}`, {
+      credentials: "include",
       method: 'DELETE',
-      headers: {
-        authorization: this.headers.authorization
-      }
     }).then(this._getResponseData);
   }
 
   updateAvatar(avatarUrl) {
     return fetch(`${this.baseUrl}/users/me/avatar`, {
+      credentials: "include",
       method: 'PATCH',
       headers: {
-        authorization: this.headers.authorization,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ avatar: avatarUrl })
@@ -71,22 +67,15 @@ class Api {
 
   changeLikeCardStatus(cardId, isLiked) {
     const method = isLiked ? 'PUT' : 'DELETE';
-
-    return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
+    return fetch(`${this.baseUrl}/cards/${cardId}/likes`, {
+      credentials: "include",
       method: method,
-      headers: {
-        authorization: this.headers.authorization
-      }
     }).then(this._getResponseData);
   }
 }
 
 const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-72',
-  headers: {
-    authorization: '04403901-3989-4ba9-8f9f-578d2bb85149',
-    'Content-Type': 'application/json'
-  }
+  baseUrl: BASE_URL,
 });
 
 export { Api, api };

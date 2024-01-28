@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
+const cors = require('cors');
 const { login, createUser } = require('./controllers/users');
 const authMiddleware = require('./middlewares/auth');
 const NotFoundError = require('./errors/not-found-error');
@@ -55,6 +56,10 @@ db.once('open', () => {
   console.log('Успешное подключение к MongoDB');
 });
 
+app.use(cors({
+  origin: ['http://localhost:3001', 'https://zuev.nomoredomainsmonster.ru'],
+  credentials: true,
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(cookieParser());
