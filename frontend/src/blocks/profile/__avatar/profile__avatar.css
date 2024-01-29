@@ -4,4 +4,5 @@
   height: 120px;
   transition: filter 0.3s;
   z-index: 2;
+  object-fit: cover;
 }

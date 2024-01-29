@@ -22,7 +22,7 @@ const Register = () => {
   const handleSubmit = e => {
     e.preventDefault();
     auth.signUp(formValue.email, formValue.password).then(res => {
-      if (res.data) {
+      if (res._id) {
         setinfoTooltip({ isOpen: true, state: 'success' });
         setFormValue({
           email: '',
